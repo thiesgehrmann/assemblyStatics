@@ -12,7 +12,16 @@ import re
 import string
 
 # transliterate for reverse complement
-trans = string.maketrans('ACGTacgt', 'TGCAtgca')
+#trans = string.maketrans('ACGTacgt', 'TGCAtgca')
+trans = {
+         'A' : 'T',
+         'C' : 'G',
+         'G' : 'C',
+         'T' : 'A',
+         'a' : 't',
+         'c' : 'g',
+         'g' : 'c',
+         't' : 'a' }
 # re for fasta header
 r = re.compile("^>(?P<name>\S+)(\s(?P<desc>.*))?")
 
@@ -44,7 +53,7 @@ class Fasta(object):
 def gcContent(seq):
     '''return gc content'''
     
-    gc = seq.count('G') + seq.count('g')+ seq.count('c')+ seq.count('C')
+    gc = len([x for x in seq if x in 'GCgc'])
     gcContent = float(gc) / len(seq)
     return gcContent
 
@@ -97,4 +106,4 @@ if __name__ == "__main__":
     
     test = [10,20,30,40,50]
     m = Nx0(test, 50)
-    print m
+    print(m)
