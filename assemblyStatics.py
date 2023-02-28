@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 __author__ = "Wenchao Lin"
 __copyright__ = "Copyright 2015, TBC"
 __license__ = "GPL"
